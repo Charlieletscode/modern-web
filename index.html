@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>富山精機廠 · Fu San Machinery — Product Studies</title>
+<style>
+:root{
+  --bg:#002547;--bg2:#003366;--panel:#013a6b;--line:#0b4d85;
+  --ink:#f2f8ff;--dim:#7fb4dd;--accent:#66CCFF;--gold:#c9c520;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;min-height:100svh;display:flex;align-items:center;
+  background:linear-gradient(180deg,#002547 0%,#003366 42%,#00294f 100%);
+  background-attachment:fixed;color:var(--ink);
+  font-family:"Inter","Segoe UI","Noto Sans TC",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;padding:8vh 7vw;position:relative;overflow:hidden;
+}
+.mono{font-family:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace}
+body::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;opacity:.35;mask-image:radial-gradient(ellipse at 30% 40%,#000 10%,transparent 72%);
+}
+body>*{position:relative}
+.eyebrow{letter-spacing:.42em;font-size:11px;color:var(--gold);text-transform:uppercase;margin-bottom:28px}
+h1{font-size:clamp(30px,5.4vw,64px);line-height:1.02;margin:0;font-weight:650;letter-spacing:-.03em;color:#fff}
+h1 em{font-style:normal;color:var(--accent)}
+.sub{margin-top:24px;max-width:56ch;color:var(--dim);font-size:16px;line-height:1.7}
+.catalog{margin-top:54px;border-top:1px solid var(--line);max-width:880px}
+.entry{
+  display:flex;align-items:baseline;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);
+  color:var(--ink);text-decoration:none;transition:background .25s,padding .25s;
+}
+.entry:hover{background:#ffffff08;padding-left:14px}
+.entry b{font-size:10px;width:28px;flex:none;font-weight:500;color:var(--dim)}
+.entry .name{font-size:clamp(18px,2.4vw,26px);font-weight:600;letter-spacing:-.02em}
+.entry .meta{margin-left:auto;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.16em}
+.entry .go{color:var(--accent);font-size:18px}
+footer{margin-top:60px;display:flex;gap:18px;flex-wrap:wrap;color:var(--dim);font-size:11.5px}
+footer span{border-right:1px solid var(--line);padding-right:18px}
+footer span:last-child{border-right:0;padding-right:0}
+</style>
+</head>
+<body>
+<div>
+  <div class="eyebrow">富山精機廠 · Fu San Machinery · Est. 1962</div>
+  <h1>BRASS BALL VALVES<br><em>BUILT SINCE 1962</em></h1>
+  <p class="sub">Re-engineering studies of the Fu San catalogue — each drawing rebuilt as an interactive, scroll-driven exploded assembly.</p>
+  <div class="catalog">
+    <a class="entry" href="oneOftheProduct.html">
+      <b class="mono">01</b>
+      <span class="name">BRASS 600 FP CxC BALL VALVE</span>
+      <span class="meta mono">FIG. F1362FP · 11 parts · 3/8"–3"</span>
+      <span class="go">→</span>
+    </a>
+  </div>
+  <footer>
+    <span>UL · CNS · CSA · CGA · AGA · ASSE</span>
+    <span>ANSI/NSF · FM · ISO 9001 · PED/CE</span>
+    <span>Changhua HQ · 30,000 m² · 2,000,000 units/month</span>
+  </footer>
+</div>
+</body>
+</html>
