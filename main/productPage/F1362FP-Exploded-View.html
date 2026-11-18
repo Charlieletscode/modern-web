@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F1362FP · Brass 600 FP CxC Ball Valve</title>
+<link rel="stylesheet" href="fusan-exploded.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="eyebrow">富山精機廠 · Fusan Precision · DWG B3-00A-1</div>
+  <h1>BRASS 600 FP<br>CxC BALL VALVE<br><em>FIG. F1362FP</em></h1>
+  <p class="sub">An exploded assembly study of a two-piece brass ball valve, rebuilt from the original A4 production drawing. Scroll to assemble all eleven components — body, seats, ball disc, end plug, stem train and lever.</p>
+  <div class="meta">
+    <div><b>Sizes</b><span>3/8" – 3"</span></div>
+    <div><b>Rating</b><span>600 WOG full port</span></div>
+    <div><b>Ends</b><span>C × C solder socket</span></div>
+    <div><b>Parts</b><span>11</span></div>
+    <div><b>Units</b><span>mm · third angle</span></div>
+  </div>
+  <div class="scrollcue"><i></i>SCROLL TO ASSEMBLE</div>
+</section>
+
+<section class="scene" id="scene">
+  <div class="sticky">
+    <div class="toggle">
+      <button id="bRender" class="on">Rendered</button>
+      <button id="bBlue">Blueprint</button>
+    </div>
+
+    <aside class="rail" id="rail"><h4>Bill of materials</h4></aside>
+
+    <div class="stage">
+      <svg class="valve" id="svg" viewBox="40 100 700 372" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- brass keyed to the site's #999900 olive-gold -->
+          <linearGradient id="gBrass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#eeea86"/><stop offset=".30" stop-color="#c9c520"/>
+            <stop offset=".62" stop-color="#8a8711"/><stop offset="1" stop-color="#4d4b08"/>
+          </linearGradient>
+          <linearGradient id="gBrass2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f8f5a8"/><stop offset=".34" stop-color="#d9d53c"/>
+            <stop offset=".68" stop-color="#9a9714"/><stop offset="1" stop-color="#5c5a0b"/>
+          </linearGradient>
+          <!-- steel keyed to #66CCFF / #0066CC -->
+          <linearGradient id="gSteel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e6f6ff"/><stop offset=".36" stop-color="#9fd6f5"/>
+            <stop offset=".70" stop-color="#4a92c4"/><stop offset="1" stop-color="#14456f"/>
+          </linearGradient>
+          <linearGradient id="gPtfe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#dcebf6"/><stop offset="1" stop-color="#9dbdd4"/>
+          </linearGradient>
+          <radialGradient id="gBall" cx=".34" cy=".28" r=".85">
+            <stop offset="0" stop-color="#fbf8b4"/><stop offset=".40" stop-color="#d4d033"/>
+            <stop offset=".78" stop-color="#8a8711"/><stop offset="1" stop-color="#454306"/>
+          </radialGradient>
+        </defs>
+
+        <!-- centre lines -->
+        <g id="axes">
+          <path class="cl" d="M70 330 H720"/>
+          <path class="cl" d="M383 112 V400"/>
+        </g>
+
+        <!-- 10 BODY -->
+        <g class="part" id="p-body">
+          <path class="brass" d="M150 294 h132 v-10 q0-8 10-8 h182 q10 0 10 8 v92 q0 8 -10 8 h-182 q-10 0 -10 -8 v-10 h-132 z"/>
+          <rect class="brass" x="148" y="292" width="20" height="76" rx="3"/>
+          <path class="bore" d="M150 312 h146 v36 h-146 z"/>
+          <path class="det" d="M150 312 h150 M150 348 h150 M168 292 v76 M282 294 v72"/>
+          <path class="det" d="M292 286 h186 M292 374 h186"/>
+          <!-- neck walls -->
+          <path class="brass2" d="M352 282 h18 v-52 h-18 q-4 0 -4 6 v40 q0 6 4 6 z"/>
+          <path class="brass2" d="M414 282 h-18 v-52 h18 q4 0 4 6 v40 q0 6 -4 6 z"/>
+          <path class="det" d="M352 242 h16 M352 252 h16 M352 262 h16 M398 242 h16 M398 252 h16 M398 262 h16"/>
+          <path class="det" d="M300 300 q0 30 0 60 M470 300 q0 30 0 60"/>
+        </g>
+
+        <!-- 7a BALL DISC PACKING (left seat) -->
+        <g class="part" id="p-seatL">
+          <path class="ptfe" d="M322 302 h16 q6 10 6 28 t-6 28 h-16 z M322 302 v56 h-8 v-56 z"/>
+          <path class="ptfe" d="M314 312 h30 v36 h-30 z" opacity=".0"/>
+          <path class="detl" d="M314 312 h30 M314 348 h30"/>
+        </g>
+
+        <!-- 8 BALL DISC -->
+        <g class="part" id="p-ball">
+          <circle cx="383" cy="330" r="41" fill="url(#gBall)" stroke="#2e2d04" stroke-width="1.4"/>
+          <path d="M342 312 h82 v36 h-82 z" fill="#4a4807" opacity=".75"/>
+          <ellipse cx="344" cy="330" rx="5" ry="18" fill="#242303" opacity=".85"/>
+          <ellipse cx="422" cy="330" rx="5" ry="18" fill="#6e6c0f" opacity=".7"/>
+          <path class="det" d="M383 289 v-0 M352 300 q31 -14 62 0"/>
+          <rect x="371" y="286" width="24" height="16" rx="2" fill="#3c3a05" stroke="#2e2d04" stroke-width="1.2"/>
+        </g>
+
+        <!-- 7b BALL DISC PACKING (right seat) -->
+        <g class="part" id="p-seatR">
+          <path class="ptfe" d="M444 302 h-16 q-6 10 -6 28 t6 28 h16 z M444 302 v56 h8 v-56 z"/>
+          <path class="detl" d="M422 312 h30 M422 348 h30"/>
+        </g>
+
+        <!-- 11 END PLUG -->
+        <g class="part" id="p-plug">
+          <rect class="brass2" x="446" y="300" width="34" height="60" rx="2"/>
+          <path class="det" d="M446 306 h34 M446 316 h34 M446 326 h34 M446 336 h34 M446 346 h34 M446 356 h34"/>
+          <path class="brass2" d="M478 288 h30 v84 h-30 z"/>
+          <path class="brass2" d="M506 294 h110 v72 h-110 z"/>
+          <rect class="brass2" x="612" y="292" width="20" height="76" rx="3"/>
+          <path class="bore" d="M480 312 h152 v36 h-152 z"/>
+          <path class="det" d="M478 312 h154 M478 348 h154 M506 294 v72 M612 292 v76"/>
+        </g>
+
+        <!-- 12 THRUST WASHER -->
+        <g class="part" id="p-thrust">
+          <path class="ptfe" d="M366 268 h34 v14 h-34 z"/>
+          <path class="detl" d="M374 268 v14 M392 268 v14"/>
+        </g>
+
+        <!-- 5 STEM -->
+        <g class="part" id="p-stem">
+          <path class="brass2" d="M372 124 h22 v26 h-22 z"/>
+          <path class="brass2" d="M374 150 h18 v132 h-18 z"/>
+          <path class="brass2" d="M366 282 h30 v22 q0 4 -4 4 h-22 q-4 0 -4 -4 z"/>
+          <path class="det" d="M374 128 h18 M374 136 h18 M374 144 h18"/>
+          <path class="det" d="M383 150 v132" opacity=".35"/>
+        </g>
+
+        <!-- 4 STEM PACKING -->
+        <g class="part" id="p-packing">
+          <path class="ptfe" d="M366 246 h34 v20 h-34 z"/>
+          <path class="detl" d="M366 256 h34 M374 246 v20 M392 246 v20"/>
+        </g>
+
+        <!-- 3 STEM GLAND SCREW -->
+        <g class="part" id="p-gland">
+          <path class="brass2" d="M364 228 h38 v16 h-38 z"/>
+          <path class="det" d="M364 232 h38 M364 238 h38"/>
+          <path class="brass2" d="M350 198 l9 -8 h48 l9 8 v22 l-9 8 h-48 l-9 -8 z"/>
+          <path class="det" d="M359 190 v38 M407 190 v38"/>
+          <path class="bore" d="M374 190 h18 v38 h-18 z"/>
+        </g>
+
+        <!-- 2 HANDLE -->
+        <g class="part" id="p-handle">
+          <path class="steel" d="M344 156 h78 v30 h-78 q-5 0 -5 -6 v-18 q0 -6 5 -6 z"/>
+          <path class="steel" d="M410 158 l46 -30 h242 q16 0 16 16 t-16 16 h-234 l-54 28 z"/>
+          <path class="detl" d="M470 136 h220 M470 152 h220"/>
+          <path class="detl" d="M540 128 v24 M580 128 v24 M620 128 v24 M660 128 v24"/>
+          <circle cx="383" cy="171" r="11" fill="none" stroke="#2a3038" stroke-width="1.3"/>
+          <path class="detl" d="M344 164 h66 M344 178 h58"/>
+        </g>
+
+        <!-- 1 NUT -->
+        <g class="part" id="p-nut">
+          <path class="steel" d="M358 128 l8 -8 h34 l8 8 v16 l-8 8 h-34 l-8 -8 z"/>
+          <path class="detl" d="M366 120 v32 M400 120 v32 M358 136 h50"/>
+        </g>
+
+        <!-- callouts -->
+        <g class="callout" id="callouts" opacity="0">
+          <g><circle cx="86" cy="130" r="13"/><text x="86" y="130">1</text><path d="M99 130 H340 L372 136"/></g>
+          <g><circle cx="86" cy="166" r="13"/><text x="86" y="166">2</text><path d="M99 166 H330 L344 170"/></g>
+          <g><circle cx="86" cy="202" r="13"/><text x="86" y="202">3</text><path d="M99 202 H338 L350 206"/></g>
+          <g><circle cx="86" cy="238" r="13"/><text x="86" y="238">4</text><path d="M99 238 H340 L366 252"/></g>
+          <g><circle cx="86" cy="274" r="13"/><text x="86" y="274">5</text><path d="M99 274 H344 L374 262"/></g>
+          <g><circle cx="86" cy="310" r="13"/><text x="86" y="310">12</text><path d="M99 310 H344 L366 278"/></g>
+          <g><circle cx="222" cy="438" r="13"/><text x="222" y="438">10</text><path d="M222 425 V392 L252 366"/></g>
+          <g><circle cx="300" cy="438" r="13"/><text x="300" y="438">7</text><path d="M300 425 V396 L328 356"/></g>
+          <g><circle cx="378" cy="438" r="13"/><text x="378" y="438">8</text><path d="M378 425 V396 L383 368"/></g>
+          <g><circle cx="456" cy="438" r="13"/><text x="456" y="438">11</text><path d="M456 425 V396 L492 372"/></g>
+          <g><text x="628" y="414" style="font:600 17px ui-monospace,monospace">FIG:F1362FP</text></g>
+        </g>
+      </svg>
+    </div>
+
+    <aside class="info">
+      <div class="step mono" id="step">01 / 11</div>
+      <div class="pname" id="pname">BODY</div>
+      <div class="kv"><b>Part&nbsp;no</b><span id="pno">10</span></div>
+      <div class="kv"><b>Qty</b><span id="pqty">1 pc</span></div>
+      <div class="kv"><b>Material</b><span id="pmat">ASTM B124-C37700</span></div>
+      <div class="kv"><b>Remarks</b><span id="prem">—</span></div>
+    </aside>
+
+    <div class="bar" id="bar"></div>
+  </div>
+</section>
+
+<section class="specs">
+  <h2>Drawing data</h2>
+  <p class="lead">Transcribed from sheet B3-00A-1 rev.②, 2011.10.13 — 富山精機廠股份有限公司.</p>
+  <div class="grid2">
+    <table>
+      <caption>Bill of materials</caption>
+      <thead><tr><th>No</th><th>Part</th><th>Pcs</th><th>Material</th></tr></thead>
+      <tbody id="bom"></tbody>
+    </table>
+    <table>
+      <caption>Dimensions (mm)</caption>
+      <thead><tr><th>Size</th><th>L</th><th>H</th><th>D</th><th>A</th></tr></thead>
+      <tbody id="dims"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <span>BRASS 600 FP CxC BALL VALVE · FIG F1362FP · B3-00A-1</span>
+  <span>Third angle projection · mm · FT809-3 A4 (210×297)</span>
+</footer>
+
+<script>
+const PARTS=[
+ {id:'p-body',   no:10,name:'BODY',              pcs:1,mat:'ASTM B124-C37700 / JIS H3250-C3771B',rem:'2"~3" : ASTM B584-C85700 / JIS H5120-CAC203',from:{x:0,y:170,r:0}},
+ {id:'p-seatL',  no:7, name:'BALL DISC PACKING', pcs:2,mat:'TEFLON PTFE',rem:'同 B1-07A · inlet seat',from:{x:-280,y:0,r:0}},
+ {id:'p-ball',   no:8, name:'BALL DISC',         pcs:1,mat:'ASTM B16-C36000 / JIS H3250-C3604B',rem:'1"~3" : ASTM B124-C37700 / JIS H3250-C3771B',from:{x:0,y:210,r:-95}},
+ {id:'p-seatR',  no:7, name:'BALL DISC PACKING', pcs:2,mat:'TEFLON PTFE',rem:'同 B1-07A · outlet seat',from:{x:280,y:0,r:0}},
+ {id:'p-plug',   no:11,name:'END PLUG',          pcs:1,mat:'ASTM B124-C37700 / JIS H3250-C3771B',rem:'Threaded into body',from:{x:330,y:0,r:0}},
+ {id:'p-thrust', no:12,name:'THRUST WASHER',     pcs:1,mat:'TEFLON PTFE',rem:'2"~3"',from:{x:0,y:-210,r:0}},
+ {id:'p-stem',   no:5, name:'STEM',              pcs:1,mat:'ASTM B16-C36000 / JIS H3250-C3604B',rem:'同 B1-05A · blow-out proof',from:{x:0,y:-260,r:0}},
+ {id:'p-packing',no:4, name:'STEM PACKING',      pcs:1,mat:'TEFLON PTFE',rem:'同 B1-04A',from:{x:-250,y:-130,r:0}},
+ {id:'p-gland',  no:3, name:'STEM GLAND SCREW',  pcs:1,mat:'ASTM B16-C36000 / JIS H3250-C3604B',rem:'同 B1-03A',from:{x:0,y:-230,r:70}},
+ {id:'p-nut',    no:1, name:'NUT',               pcs:1,mat:'AISI-1010 / JIS S10C',rem:'同 B1-01A',from:{x:0,y:-280,r:140}},
+ {id:'p-handle', no:2, name:'HANDLE',            pcs:1,mat:'ASTM A283-D / JIS SS400',rem:'同 B1-02A · ON/OFF lever',from:{x:300,y:-190,r:-28}},
+];
+const DIMS=[['3/8',41,37,10,80],['1/2',49,38,12.7,80],['3/4',69,47,19,110],['1',84,52,25,110],
+            ['1 1/4',96,60,32,130],['1 1/2',109,65,38,130],['2',136,79,50,200],['2 1/2',157,89,63,200],['3',180,98,75,200]];
+
+const STEP=0.082, WIN=0.132, END=PARTS.length*STEP; // callouts after END
+PARTS.forEach((p,i)=>{p.r0=i*STEP;p.r1=i*STEP+WIN;p.el=document.getElementById(p.id)});
+
+/* rail */
+const rail=document.getElementById('rail');
+PARTS.forEach((p,i)=>{
+  const b=document.createElement('button');
+  b.className='ritem';b.innerHTML=`<b class="mono">${String(p.no).padStart(2,'0')}</b>${p.name}`;
+  b.onclick=()=>{const s=document.getElementById('scene');
+    window.scrollTo({top:s.offsetTop+(p.r0+WIN*0.92)*(s.offsetHeight-innerHeight),behavior:'smooth'})};
+  p.btn=b;rail.appendChild(b);
+});
+
+/* tables */
+document.getElementById('bom').innerHTML=[...PARTS].filter((p,i,a)=>a.findIndex(q=>q.no===p.no)===i)
+  .sort((a,b)=>a.no-b.no).map(p=>`<tr><td class="n mono">${p.no}</td><td>${p.name}</td><td class="mono">${p.pcs}</td><td>${p.mat}<small>${p.rem}</small></td></tr>`).join('');
+document.getElementById('dims').innerHTML=DIMS.map(d=>`<tr><td>${d[0]}"</td>${d.slice(1).map(v=>`<td class="mono">${v}</td>`).join('')}</tr>`).join('');
+
+/* animation */
+const scene=document.getElementById('scene'),bar=document.getElementById('bar'),
+      callouts=document.getElementById('callouts'),axes=document.getElementById('axes'),
+      elStep=document.getElementById('step'),elName=document.getElementById('pname'),
+      elNo=document.getElementById('pno'),elQty=document.getElementById('pqty'),
+      elMat=document.getElementById('pmat'),elRem=document.getElementById('prem');
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const out=t=>1-Math.pow(1-t,3.2);
+let target=0,cur=0,last=-1;
+
+function measure(){
+  const r=scene.getBoundingClientRect();
+  target=cl(-r.top/(scene.offsetHeight-innerHeight));
+  if(document.visibilityState!=='visible'){cur=target;apply(cur)}
+}
+function apply(p){
+  PARTS.forEach((s,i)=>{
+    const t=out(cl((p-s.r0)/(s.r1-s.r0)));
+    const f=1-t;
+    s.el.style.transform=`translate(${s.from.x*f}px,${s.from.y*f}px) rotate(${s.from.r*f}deg) scale(${0.92+0.08*t})`;
+    s.el.style.opacity=cl(t*2.2);
+    const on=p>=s.r0&&p<s.r1+0.012;
+    s.btn.classList.toggle('on',on);
+    s.btn.classList.toggle('done',p>=s.r1);
+  });
+  const ci=cl((p-END)/(1-END-0.02));
+  callouts.setAttribute('opacity',ci.toFixed(3));
+  axes.setAttribute('opacity',(0.25+0.75*ci).toFixed(3));
+  bar.style.width=(p*100).toFixed(2)+'%';
+
+  let idx=0;for(let i=0;i<PARTS.length;i++)if(p>=PARTS[i].r0)idx=i;
+  if(idx!==last){
+    last=idx;const s=PARTS[idx];
+    elStep.textContent=String(idx+1).padStart(2,'0')+' / '+PARTS.length;
+    elName.textContent=s.name;elNo.textContent=s.no;elQty.textContent=s.pcs+' pc'+(s.pcs>1?'s':'');
+    elMat.textContent=s.mat;elRem.textContent=s.rem;
+  }
+}
+function frame(){
+  cur+=(target-cur)*0.12;
+  if(Math.abs(target-cur)<0.00012)cur=target;
+  apply(cur);
+  requestAnimationFrame(frame);
+}
+addEventListener('scroll',measure,{passive:true});
+addEventListener('resize',measure);
+measure();cur=target;frame();
+
+/* mode toggle */
+const bR=document.getElementById('bRender'),bB=document.getElementById('bBlue');
+bR.onclick=()=>{document.body.classList.remove('bp');bR.classList.add('on');bB.classList.remove('on')};
+bB.onclick=()=>{document.body.classList.add('bp');bB.classList.add('on');bR.classList.remove('on')};
+</script>
+</body>
+</html>

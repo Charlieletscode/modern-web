@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F1361SPMCL &middot; Forging Gas Ball Valve (Full Capacity)</title>
+<style>
+:root{
+  /* Fu San Machinery house palette: #003366 navy, #0066CC, #66CCFF, #999900 */
+  --bg:#002547;
+  --bg2:#003366;
+  --panel:#013a6b;
+  --line:#0b4d85;
+  --ink:#f2f8ff;
+  --dim:#7fb4dd;
+  --accent:#66CCFF;
+  --gold:#c9c520;
+  --blue:#66CCFF;
+  --hot:#FF0099;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:linear-gradient(180deg,#002547 0%,#003366 42%,#00294f 100%);
+  background-attachment:fixed;color:var(--ink);
+  font-family:"Inter","Segoe UI","Noto Sans TC",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace}
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:8vh 7vw;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;opacity:.35;mask-image:radial-gradient(ellipse at 30% 40%,#000 10%,transparent 72%);
+}
+.hero>*{position:relative}
+.eyebrow{letter-spacing:.42em;font-size:11px;color:var(--gold);text-transform:uppercase;margin-bottom:28px}
+h1{font-size:clamp(38px,7.4vw,104px);line-height:.95;margin:0;font-weight:650;letter-spacing:-.03em;color:#fff}
+h1 em{font-style:normal;color:var(--accent)}
+.sub{margin-top:28px;max-width:54ch;color:var(--dim);font-size:16px;line-height:1.7}
+.meta{margin-top:46px;display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line)}
+.meta div{padding:16px 28px 16px 0;margin-right:28px;border-right:1px solid var(--line)}
+.meta div:last-child{border-right:0}
+.meta b{display:block;font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:7px;font-weight:500}
+.meta span{font-size:15px}
+.scrollcue{position:absolute;bottom:34px;left:7vw;font-size:11px;letter-spacing:.3em;color:var(--dim);display:flex;align-items:center;gap:12px}
+.scrollcue i{display:block;width:1px;height:38px;background:linear-gradient(var(--gold),transparent);animation:cue 1.9s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- scene ---------- */
+.scene{height:1150vh;position:relative}
+.sticky{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:260px 1fr 250px;gap:0;align-items:stretch}
+
+.rail{border-right:1px solid var(--line);padding:28px 0 28px 7vw;display:flex;flex-direction:column;justify-content:center;gap:2px;overflow:hidden}
+.rail h4{margin:0 0 16px;font-size:10px;letter-spacing:.26em;color:var(--dim);text-transform:uppercase;font-weight:500}
+.ritem{
+  display:flex;gap:12px;align-items:baseline;padding:6px 10px 6px 0;border:0;background:0;color:var(--dim);
+  cursor:pointer;text-align:left;font:inherit;font-size:12.5px;border-left:2px solid transparent;padding-left:12px;
+  transition:color .25s,border-color .25s,opacity .25s;opacity:.5;width:100%;
+}
+.ritem:hover{color:var(--ink);opacity:.85}
+.ritem b{font-size:10px;width:16px;flex:none;font-weight:500}
+.ritem.done{opacity:.8;color:#8fc4e8}
+.ritem.on{opacity:1;color:var(--ink);border-left-color:var(--gold)}
+.ritem.on b{color:var(--gold)}
+
+.stage{position:relative;display:flex;align-items:center;justify-content:center;padding:0 1vw}
+svg.valve{width:100%;height:auto;max-height:76svh;overflow:visible}
+
+.info{border-left:1px solid var(--line);padding:28px 7vw 28px 26px;display:flex;flex-direction:column;justify-content:center}
+.step{font-size:11px;letter-spacing:.2em;color:var(--gold)}
+.pname{font-size:clamp(20px,2.1vw,30px);line-height:1.1;margin:12px 0 18px;font-weight:600;letter-spacing:-.02em}
+.kv{border-top:1px solid var(--line);padding:11px 0;font-size:12px;display:flex;gap:10px}
+.kv b{color:var(--dim);font-weight:500;min-width:62px;flex:none;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding-top:2px}
+.kv span{line-height:1.55}
+
+.bar{position:absolute;left:0;bottom:0;height:2px;background:linear-gradient(90deg,#0066CC,#66CCFF);width:0;z-index:5;box-shadow:0 0 14px #66CCFF}
+.toggle{
+  position:absolute;top:24px;right:24px;z-index:6;display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)
+}
+.toggle button{border:0;background:0;color:var(--dim);font:inherit;font-size:10px;letter-spacing:.16em;padding:8px 15px;cursor:pointer;text-transform:uppercase}
+.toggle button.on{background:var(--accent);color:#00294f;font-weight:600}
+
+/* part transforms */
+.part{transform-box:fill-box;transform-origin:50% 50%;will-change:transform,opacity}
+
+/* ---------- render styles ---------- */
+.brass{fill:url(#gBrass);stroke:#2e2d04;stroke-width:1.4;stroke-linejoin:round}
+.brass2{fill:url(#gBrass2);stroke:#2e2d04;stroke-width:1.4;stroke-linejoin:round}
+.zinc{fill:url(#gZinc);stroke:#243542;stroke-width:1.4;stroke-linejoin:round}
+.steel{fill:url(#gSteel);stroke:#0b3457;stroke-width:1.4;stroke-linejoin:round}
+.alu{fill:url(#gAlu);stroke:#44525e;stroke-width:1.2;stroke-linejoin:round}
+.ptfe{fill:url(#gPtfe);stroke:#4e7a99;stroke-width:1.3;stroke-linejoin:round}
+.det{fill:none;stroke:#2e2d04;stroke-width:1;opacity:.6}
+.detl{fill:none;stroke:#0b3457;stroke-width:1;opacity:.55}
+.bore{fill:#5c5a0b;opacity:.55;stroke:none}
+.cl{stroke:#66CCFF;stroke-width:.8;opacity:.45;fill:none;stroke-dasharray:22 5 3 5}
+.callout circle{fill:none;stroke:var(--accent);stroke-width:1.2}
+.callout text{fill:var(--accent);font:600 13px ui-monospace,monospace;text-anchor:middle;dominant-baseline:central}
+.callout path{stroke:var(--accent);stroke-width:.9;fill:none;opacity:.7}
+
+/* blueprint mode */
+.bp .brass,.bp .brass2,.bp .zinc,.bp .steel,.bp .alu,.bp .ptfe{fill:none;stroke:var(--blue);stroke-width:1.5}
+.bp .det,.bp .detl{stroke:var(--blue);opacity:.55}
+.bp .bore{fill:var(--blue);opacity:.1}
+.bp .cl{stroke:var(--blue);opacity:.5}
+.bp .callout circle,.bp .callout path{stroke:#fff}
+.bp .callout text{fill:#fff}
+.bp .stage{background:transparent}
+
+/* ---------- specs ---------- */
+.specs{padding:14vh 7vw;border-top:1px solid var(--line)}
+.specs h2{font-size:clamp(26px,3.6vw,46px);margin:0 0 10px;letter-spacing:-.025em;font-weight:620}
+.specs p.lead{color:var(--dim);margin:0 0 54px;font-size:15px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+caption{text-align:left;font-size:10px;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;padding-bottom:14px;font-weight:600}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--dim);font-weight:600}
+td small{display:block;color:var(--dim);font-size:11px;margin-top:3px}
+td.n{font-family:ui-monospace,monospace;color:var(--accent)}
+tbody tr:hover{background:rgba(102,204,255,.06)}
+
+.torque{margin-top:64px}
+.torque ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.torque li{background:var(--panel);padding:16px 18px}
+.torque b{display:block;font-size:19px;font-family:ui-monospace,monospace;color:var(--accent);margin-bottom:4px}
+.torque span{display:block;font-size:11px;color:var(--dim);letter-spacing:.1em}
+.note{margin-top:18px;font-size:12.5px;color:var(--dim)}
+
+footer{padding:26px 7vw 44px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+
+@media(max-width:1040px){
+  .sticky{grid-template-columns:1fr}
+  .rail,.info{display:none}
+  .stage{padding:0 5vw}
+  .grid2{grid-template-columns:1fr;gap:44px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scrollcue i{animation:none}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <p class="eyebrow">Fu San Machinery Co., Ltd. &nbsp;&middot;&nbsp; 富山精機廠股份有限公司</p>
+  <h1>F1361<em>SPMCL</em></h1>
+  <p class="sub">
+    Forging gas ball valve, full capacity. Forged brass body with a cross handle,
+    blow-out proof stem and PTFE seats &mdash; sizes 3/8&Prime; through 1&Prime;.
+    Also supplied as F1361SPMCS and F1361SPMCT.
+  </p>
+  <div class="meta">
+    <div><b>Drawing</b><span class="mono">A4-00 rev.&#9315;</span></div>
+    <div><b>Dated</b><span class="mono">1 9 2009.05.20</span></div>
+    <div><b>Sizes</b><span class="mono">3/8&Prime; &ndash; 1&Prime;</span></div>
+    <div><b>Parts</b><span class="mono">10</span></div>
+  </div>
+  <div class="scrollcue"><i></i>SCROLL TO ASSEMBLE</div>
+</section>
+
+<section class="scene" id="scene">
+  <div class="sticky">
+
+    <div class="toggle">
+      <button id="bRender" class="on">Rendered</button>
+      <button id="bBlue">Blueprint</button>
+    </div>
+
+    <aside class="rail" id="rail"><h4>Bill of materials</h4></aside>
+
+    <div class="stage">
+      <!-- ============================================================
+           F1361SPMCL cross-handle gas ball valve, sectioned front view.
+           Traced from drawing A4-00 rev.4. Each numbered balloon in the
+           original sheet maps to one <g class="part"> below.
+           ============================================================ -->
+      <svg class="valve" id="svg" viewBox="60 60 660 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gBrass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e8d98a"/>
+            <stop offset=".42" stop-color="#c9a227"/>
+            <stop offset="1" stop-color="#8a6f1e"/>
+          </linearGradient>
+          <linearGradient id="gBrass2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d9c56f"/>
+            <stop offset=".5" stop-color="#b8902a"/>
+            <stop offset="1" stop-color="#7a6119"/>
+          </linearGradient>
+          <linearGradient id="gZinc" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#cfd8de"/>
+            <stop offset=".5" stop-color="#93a3af"/>
+            <stop offset="1" stop-color="#5d6b76"/>
+          </linearGradient>
+          <linearGradient id="gSteel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#dfe9f2"/>
+            <stop offset=".5" stop-color="#9fb4c6"/>
+            <stop offset="1" stop-color="#60788c"/>
+          </linearGradient>
+          <linearGradient id="gAlu" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#eef3f7"/>
+            <stop offset=".5" stop-color="#c3ced6"/>
+            <stop offset="1" stop-color="#8d9aa4"/>
+          </linearGradient>
+          <linearGradient id="gPtfe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset=".55" stop-color="#dceaf5"/>
+            <stop offset="1" stop-color="#a8c6dc"/>
+          </linearGradient>
+          <radialGradient id="gBall" cx=".34" cy=".28" r=".85">
+            <stop offset="0" stop-color="#f0e4a4"/>
+            <stop offset=".45" stop-color="#c9a227"/>
+            <stop offset="1" stop-color="#6d5615"/>
+          </radialGradient>
+        </defs>
+
+        <!-- centre lines -->
+        <g id="axes" opacity=".25">
+          <path class="cl" d="M96 310 H690"/>
+          <path class="cl" d="M392 96 V452"/>
+        </g>
+
+        <!-- 7  BODY ------------------------------------------------- -->
+        <g class="part" id="p-body">
+          <path class="brass" d="M214 360
+                                 H286 V372 H330 V378 H454 V372 H488 V360 H500
+                                 V262 H488 V250 H454 V244 H420 V206 H364 V244 H330
+                                 V250 H286 V262 H214 Z"/>
+          <!-- female thread, inlet -->
+          <path class="det" d="M214 272 h58 M214 282 h58 M214 292 h58
+                               M214 328 h58 M214 338 h58 M214 348 h58"/>
+          <!-- internal cavity outline -->
+          <path class="det" d="M286 288 h52 M286 332 h52 M446 288 h42 M446 332 h42"/>
+          <!-- flats on the hex waist -->
+          <path class="det" d="M330 250 v110 M454 250 v110"/>
+          <!-- stem bore in the boss -->
+          <path class="det" d="M372 206 v46 M412 206 v46"/>
+        </g>
+
+        <!-- flow passage (not a part, reads as the bore) -->
+        <g id="borepath">
+          <path class="bore" d="M214 292 H500 V328 H214 Z"/>
+        </g>
+
+        <!-- 8  BALL DISC TEFLON  (inlet seat) ------------------------ -->
+        <g class="part" id="p-seatL">
+          <path class="ptfe" d="M322 280 h20 a40 40 0 0 0 0 60 h-20 Z"/>
+          <path class="detl" d="M322 292 h12 M322 328 h12"/>
+        </g>
+
+        <!-- 9  BALL DISC -------------------------------------------- -->
+        <g class="part" id="p-ball">
+          <circle cx="392" cy="310" r="46" fill="url(#gBall)" stroke="#2e2d04" stroke-width="1.4"/>
+          <path class="bore" d="M346 294 H438 V326 H346 Z"/>
+          <path class="det" d="M346 294 h92 M346 326 h92"/>
+          <!-- stem slot on top of the ball -->
+          <rect x="382" y="264" width="20" height="12" rx="2"
+                fill="#6d5615" stroke="#2e2d04" stroke-width="1.2"/>
+        </g>
+
+        <!-- 8  BALL DISC TEFLON  (outlet seat) ----------------------- -->
+        <g class="part" id="p-seatR">
+          <path class="ptfe" d="M462 280 h-20 a40 40 0 0 1 0 60 h20 Z"/>
+          <path class="detl" d="M450 292 h12 M450 328 h12"/>
+        </g>
+
+        <!-- 10 END PLUG --------------------------------------------- -->
+        <g class="part" id="p-plug">
+          <path class="brass2" d="M500 262 h40 v-10 h26 v116 h-26 v-10 h-40 Z"/>
+          <path class="det" d="M506 272 h30 M506 282 h30 M506 338 h30 M506 348 h30"/>
+          <path class="det" d="M540 262 v96"/>
+          <path class="bore" d="M500 292 h40 v36 h-40 Z"/>
+        </g>
+
+        <!-- 3  STEM -------------------------------------------------- -->
+        <g class="part" id="p-stem">
+          <path class="brass2" d="M376 272 h32 v-14 h-6 v-60 h10 v-14 h-40 v14 h10 v60 h-6 Z"/>
+          <path class="det" d="M384 198 v60 M400 198 v60"/>
+          <!-- blow-out proof shoulder -->
+          <path class="det" d="M376 262 h32"/>
+        </g>
+
+        <!-- 5  GLAND PACKING ---------------------------------------- -->
+        <g class="part" id="p-packing">
+          <path class="ptfe" d="M364 230 h20 v26 h-20 Z"/>
+          <path class="ptfe" d="M400 230 h20 v26 h-20 Z"/>
+          <path class="detl" d="M364 240 h20 M400 240 h20"/>
+        </g>
+
+        <!-- 4  STEM GLAND SCREW -------------------------------------- -->
+        <g class="part" id="p-gland">
+          <path class="brass2" d="M356 228 h72 v-24 h-10 l-6 -8 h-40 l-6 8 h-10 Z"/>
+          <path class="det" d="M356 214 h72 M372 196 v32 M412 196 v32"/>
+        </g>
+
+        <!-- 2  HANDLE  (cross / butterfly) --------------------------- -->
+        <g class="part" id="p-handle">
+          <path class="zinc" d="M250 186
+                                L250 168 L292 152 L352 152 L352 140
+                                L432 140 L432 152 L492 152 L534 168 L534 186
+                                L492 200 L432 200 L432 210 L352 210 L352 200
+                                L292 200 Z"/>
+          <path class="det" d="M292 152 v48 M492 152 v48 M352 152 h80 M352 200 h80"/>
+          <!-- raised hub around the stem -->
+          <path class="det" d="M370 140 v70 M414 140 v70"/>
+        </g>
+
+        <!-- 6  NAME PLATE -------------------------------------------- -->
+        <g class="part" id="p-nameplate">
+          <ellipse cx="392" cy="140" rx="30" ry="9" class="alu"/>
+          <path class="detl" d="M370 140 h44"/>
+        </g>
+
+        <!-- 1  SCREW -------------------------------------------------- -->
+        <g class="part" id="p-screw">
+          <path class="steel" d="M378 132 h28 v-12 h-6 v-10 h-16 v10 h-6 Z"/>
+          <path class="detl" d="M384 114 h16"/>
+        </g>
+
+        <!-- balloons, revealed at the end -->
+        <g class="callout" id="callouts" opacity="0">
+          <circle cx="392" cy="86" r="14"/><text x="392" y="86">1</text>
+          <path d="M392 100 V116"/>
+
+          <circle cx="594" cy="150" r="14"/><text x="594" y="150">2</text>
+          <path d="M580 156 L512 176"/>
+
+          <circle cx="594" cy="206" r="14"/><text x="594" y="206">3</text>
+          <path d="M580 208 L410 226"/>
+
+          <circle cx="594" cy="250" r="14"/><text x="594" y="250">4</text>
+          <path d="M580 248 L430 222"/>
+
+          <circle cx="150" cy="208" r="14"/><text x="150" y="208">5</text>
+          <path d="M164 212 L362 244"/>
+
+          <circle cx="490" cy="92" r="14"/><text x="490" y="92">6</text>
+          <path d="M478 100 L414 136"/>
+
+          <circle cx="664" cy="390" r="14"/><text x="664" y="390">7</text>
+          <path d="M652 384 L470 352"/>
+
+          <circle cx="560" cy="430" r="14"/><text x="560" y="430">8</text>
+          <path d="M550 420 L462 346"/>
+
+          <circle cx="466" cy="440" r="14"/><text x="466" y="440">9</text>
+          <path d="M458 428 L400 352"/>
+
+          <circle cx="170" cy="412" r="16"/><text x="170" y="412">10</text>
+          <path d="M184 404 L512 372"/>
+
+          <text x="392" y="470" style="font:600 12px ui-monospace,monospace;letter-spacing:.14em">FIG:F1361SPMCL</text>
+        </g>
+      </svg>
+    </div>
+
+    <aside class="info">
+      <div class="step mono" id="step">01 / 11</div>
+      <div class="pname" id="pname">BODY</div>
+      <div class="kv"><b>Part&nbsp;no</b><span id="pno">7</span></div>
+      <div class="kv"><b>Qty</b><span id="pqty">1 pc</span></div>
+      <div class="kv"><b>Material</b><span id="pmat">ASTM B124-C37700</span></div>
+      <div class="kv"><b>Remarks</b><span id="prem">&mdash;</span></div>
+    </aside>
+
+    <div class="bar" id="bar"></div>
+  </div>
+</section>
+
+<section class="specs">
+  <h2>Drawing data</h2>
+  <p class="lead">Transcribed from sheet A4-00 rev.&#9315;, 2009.05.20 &mdash; 富山精機廠股份有限公司.</p>
+
+  <div class="grid2">
+    <table>
+      <caption>Bill of materials</caption>
+      <thead><tr><th>No</th><th>Part</th><th>Pcs</th><th>Material</th></tr></thead>
+      <tbody id="bom"></tbody>
+    </table>
+
+    <table>
+      <caption>Dimensions (mm)</caption>
+      <thead><tr><th>Size</th><th>L</th><th>H</th><th>D</th><th>H1</th><th>H2</th><th>L1</th><th>L2</th><th>L3</th></tr></thead>
+      <tbody id="dims"></tbody>
+    </table>
+  </div>
+
+  <div class="torque">
+    <table><caption>Note 1 &mdash; torque between body and end plug</caption></table>
+    <ul id="torque"></ul>
+    <p class="note">
+      Handle travel is 90&deg; between OPEN and CLOSE. Third angle projection, dimensions in millimetres.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <span>FORGING GAS BALL (FULL CAPACITY) &middot; FIG F1361SPMCL &middot; A4-00</span>
+  <span>Third angle projection &middot; mm &middot; FT809-3 A4 (210&times;297)</span>
+</footer>
+
+<script>
+/* Assembly order follows how the valve is actually built, not the balloon
+   numbering. Item 8 (ball disc teflon, 2 pcs) appears twice: once as the
+   inlet seat and once as the outlet seat. */
+const PARTS=[
+ {id:'p-body',     no:7, name:'BODY',             pcs:1,mat:'ASTM B124-C37700 / JIS H3250-C3771B',rem:'Forged brass, full capacity',from:{x:0,y:170,r:0}},
+ {id:'p-seatL',    no:8, name:'BALL DISC TEFLON', pcs:2,mat:'TEFLON PTFE',rem:'Inlet seat',from:{x:-290,y:0,r:0}},
+ {id:'p-ball',     no:9, name:'BALL DISC',        pcs:1,mat:'ASTM B16-C36000 / JIS H3250-C3604B',rem:'Full capacity bore',from:{x:0,y:215,r:-95}},
+ {id:'p-seatR',    no:8, name:'BALL DISC TEFLON', pcs:2,mat:'TEFLON PTFE',rem:'Outlet seat',from:{x:290,y:0,r:0}},
+ {id:'p-plug',     no:10,name:'END PLUG',         pcs:1,mat:'ASTM B124-C37700 / JIS H3250-C3771B',rem:'See note 1 for torque',from:{x:340,y:0,r:0}},
+ {id:'p-stem',     no:3, name:'STEM',             pcs:1,mat:'ASTM B16-C36000 / JIS H3250-C3604B',rem:'Blow-out proof',from:{x:0,y:-265,r:0}},
+ {id:'p-packing',  no:5, name:'GLAND PACKING',    pcs:1,mat:'TEFLON PTFE',rem:'Stem seal',from:{x:-255,y:-130,r:0}},
+ {id:'p-gland',    no:4, name:'STEM GLAND SCREW', pcs:1,mat:'ASTM B16-C36000 / JIS H3250-C3604B',rem:'Compresses the packing',from:{x:0,y:-235,r:70}},
+ {id:'p-handle',   no:2, name:'HANDLE',           pcs:1,mat:'ASTM B86-AC41 / JIS H5301-ZDC1',rem:'Cross handle, 90\u00b0 travel',from:{x:310,y:-195,r:-28}},
+ {id:'p-nameplate',no:6, name:'NAME PLATE',       pcs:1,mat:'ASTM B209-1100 / JIS H4000-A1100P',rem:'Aluminium disc',from:{x:0,y:-290,r:0}},
+ {id:'p-screw',    no:1, name:'SCREW',            pcs:1,mat:'AISI-1010 / JIS S10C',rem:'Retains the handle',from:{x:0,y:-300,r:150}},
+];
+
+/* SIZE, L, H, D, H1, H2, L1, L2, L3 */
+const DIMS=[['3/8',46,31,10,37,33,29,13.3,45],
+            ['1/2',55,31,10,37,33,29,13.3,45],
+            ['3/4',62,35,15,41,36,29,13.3,45],
+            ['1',  73,42,20,48,43.5,40,17,70]];
+
+const TORQUE=[['3/8"','MIN 280 IN-LBS'],['1/2"','MIN 375 IN-LBS'],
+              ['3/4"','MIN 560 IN-LBS'],['1"','MIN 750 IN-LBS']];
+
+const STEP=0.082, WIN=0.132, END=PARTS.length*STEP; /* callouts after END */
+PARTS.forEach((p,i)=>{p.r0=i*STEP;p.r1=i*STEP+WIN;p.el=document.getElementById(p.id)});
+
+/* rail */
+const rail=document.getElementById('rail');
+PARTS.forEach((p,i)=>{
+  const b=document.createElement('button');
+  b.className='ritem';b.innerHTML=`<b class="mono">${String(p.no).padStart(2,'0')}</b>${p.name}`;
+  b.onclick=()=>{const s=document.getElementById('scene');
+    window.scrollTo({top:s.offsetTop+(p.r0+WIN*0.92)*(s.offsetHeight-innerHeight),behavior:'smooth'})};
+  p.btn=b;rail.appendChild(b);
+});
+
+/* tables */
+document.getElementById('bom').innerHTML=[...PARTS].filter((p,i,a)=>a.findIndex(q=>q.no===p.no)===i)
+  .sort((a,b)=>a.no-b.no)
+  .map(p=>`<tr><td class="n mono">${p.no}</td><td>${p.name}</td><td class="mono">${p.pcs}</td><td>${p.mat}<small>${p.rem}</small></td></tr>`).join('');
+document.getElementById('dims').innerHTML=DIMS.map(d=>
+  `<tr><td>${d[0]}"</td>${d.slice(1).map(v=>`<td class="mono">${v}</td>`).join('')}</tr>`).join('');
+document.getElementById('torque').innerHTML=TORQUE.map(t=>
+  `<li><b>${t[0]}</b><span>${t[1]}</span></li>`).join('');
+
+/* animation */
+const scene=document.getElementById('scene'),bar=document.getElementById('bar'),
+      callouts=document.getElementById('callouts'),axes=document.getElementById('axes'),
+      elStep=document.getElementById('step'),elName=document.getElementById('pname'),
+      elNo=document.getElementById('pno'),elQty=document.getElementById('pqty'),
+      elMat=document.getElementById('pmat'),elRem=document.getElementById('prem');
+const cl=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const out=t=>1-Math.pow(1-t,3.2);
+let target=0,cur=0,last=-1;
+
+function measure(){
+  const r=scene.getBoundingClientRect();
+  target=cl(-r.top/(scene.offsetHeight-innerHeight));
+  if(document.visibilityState!=='visible'){cur=target;apply(cur)}
+}
+function apply(p){
+  PARTS.forEach((s,i)=>{
+    const t=out(cl((p-s.r0)/(s.r1-s.r0)));
+    const f=1-t;
+    s.el.style.transform=`translate(${s.from.x*f}px,${s.from.y*f}px) rotate(${s.from.r*f}deg) scale(${0.92+0.08*t})`;
+    s.el.style.opacity=cl(t*2.2);
+    const on=p>=s.r0&&p<s.r1+0.012;
+    s.btn.classList.toggle('on',on);
+    s.btn.classList.toggle('done',p>=s.r1);
+  });
+  const ci=cl((p-END)/(1-END-0.02));
+  callouts.setAttribute('opacity',ci.toFixed(3));
+  axes.setAttribute('opacity',(0.25+0.75*ci).toFixed(3));
+  bar.style.width=(p*100).toFixed(2)+'%';
+
+  let idx=0;for(let i=0;i<PARTS.length;i++)if(p>=PARTS[i].r0)idx=i;
+  if(idx!==last){
+    last=idx;const s=PARTS[idx];
+    elStep.textContent=String(idx+1).padStart(2,'0')+' / '+PARTS.length;
+    elName.textContent=s.name;elNo.textContent=s.no;elQty.textContent=s.pcs+' pc'+(s.pcs>1?'s':'');
+    elMat.textContent=s.mat;elRem.textContent=s.rem;
+  }
+}
+function frame(){
+  cur+=(target-cur)*0.12;
+  if(Math.abs(target-cur)<0.00012)cur=target;
+  apply(cur);
+  requestAnimationFrame(frame);
+}
+addEventListener('scroll',measure,{passive:true});
+addEventListener('resize',measure);
+measure();cur=target;frame();
+
+/* mode toggle */
+const bR=document.getElementById('bRender'),bB=document.getElementById('bBlue');
+bR.onclick=()=>{document.body.classList.remove('bp');bR.classList.add('on');bB.classList.remove('on')};
+bB.onclick=()=>{document.body.classList.add('bp');bB.classList.add('on');bR.classList.remove('on')};
+</script>
+</body>
+</html>
