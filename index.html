@@ -1,23 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US" data-locale="en-US">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>富山精機廠 · Fu San Machinery — Product Studies</title>
+<title>Fu San Machinery — Product Studies</title>
+<meta name="description" content="Interactive exploded-assembly studies of the Fu San brass valve catalogue. Est. 1962, Changhua, Taiwan.">
+<link rel="alternate" hreflang="en-US" href="index.html?lang=en-US">
+<link rel="alternate" hreflang="zh-TW" href="index.html?lang=zh-TW">
+<link rel="alternate" hreflang="ja-JP" href="index.html?lang=ja-JP">
+<link rel="alternate" hreflang="x-default" href="index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fu San Machinery — Product Studies">
+<meta property="og:description" content="Interactive exploded-assembly studies of the Fu San brass valve catalogue. Est. 1962, Changhua, Taiwan.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta property="og:locale:alternate" content="ja_JP">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"富山精機廠股份有限公司","alternateName":"Fu San Machinery","foundingDate":"1962-04-05","numberOfEmployees":350,"address":{"@type":"PostalAddress","addressLocality":"Changhua","addressCountry":"TW"}}
+</script>
 <style>
 :root{
   --bg:#002547;--bg2:#003366;--panel:#013a6b;--line:#0b4d85;
   --ink:#f2f8ff;--dim:#7fb4dd;--accent:#66CCFF;--gold:#c9c520;
+  --font:"Inter","Segoe UI","Noto Sans TC",system-ui,sans-serif;
 }
+html[data-locale="zh-TW"]{--font:"Inter","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}
+html[data-locale="ja-JP"]{--font:"Inter","Noto Sans JP","Yu Gothic",system-ui,sans-serif}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{
   margin:0;min-height:100svh;display:flex;align-items:center;
   background:linear-gradient(180deg,#002547 0%,#003366 42%,#00294f 100%);
   background-attachment:fixed;color:var(--ink);
-  font-family:"Inter","Segoe UI","Noto Sans TC",system-ui,sans-serif;
+  font-family:var(--font);
   -webkit-font-smoothing:antialiased;padding:8vh 7vw;position:relative;overflow:hidden;
 }
+html[data-locale="zh-TW"] body,html[data-locale="ja-JP"] body{line-break:strict;word-break:normal}
 .mono{font-family:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace}
 body::before{
   content:"";position:absolute;inset:0;
@@ -25,43 +44,235 @@ body::before{
   background-size:48px 48px;opacity:.35;mask-image:radial-gradient(ellipse at 30% 40%,#000 10%,transparent 72%);
 }
 body>*{position:relative}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.skip{
+  position:absolute;top:-100px;left:24px;z-index:30;background:var(--gold);color:#002547;
+  font-size:13px;font-weight:600;padding:10px 16px;text-decoration:none;transition:top .2s
+}
+.skip:focus{top:16px}
+.locales{position:fixed;top:18px;right:18px;z-index:20;display:flex;gap:6px}
+.locales button{
+  font:inherit;font-size:11px;letter-spacing:.08em;padding:7px 12px;cursor:pointer;
+  background:var(--panel);color:var(--dim);border:1px solid var(--line);border-radius:999px
+}
+.locales button[aria-pressed="true"]{background:var(--accent);color:#00294f;font-weight:600;border-color:var(--accent)}
 .eyebrow{letter-spacing:.42em;font-size:11px;color:var(--gold);text-transform:uppercase;margin-bottom:28px}
+html[data-locale="zh-TW"] .eyebrow,html[data-locale="ja-JP"] .eyebrow{text-transform:none;letter-spacing:.18em}
 h1{font-size:clamp(30px,5.4vw,64px);line-height:1.02;margin:0;font-weight:650;letter-spacing:-.03em;color:#fff}
 h1 em{font-style:normal;color:var(--accent)}
+html[data-locale="zh-TW"] h1,html[data-locale="ja-JP"] h1{line-height:1.25;letter-spacing:0}
 .sub{margin-top:24px;max-width:56ch;color:var(--dim);font-size:16px;line-height:1.7}
-.catalog{margin-top:54px;border-top:1px solid var(--line);max-width:880px}
+html[data-locale="zh-TW"] .sub{line-height:1.85}
+html[data-locale="ja-JP"] .sub{line-height:1.9}
+.count{margin:48px 0 10px;font-size:12px;color:var(--gold);letter-spacing:.14em}
+.catalog{margin:0;border-top:1px solid var(--line);max-width:880px;list-style:none;padding:0}
+.catalog li{margin:0}
 .entry{
-  display:flex;align-items:baseline;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);
-  color:var(--ink);text-decoration:none;transition:background .25s,padding .25s;
+  display:flex;align-items:baseline;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);
+  color:var(--ink);text-decoration:none;transition:background .25s,padding .25s;flex-wrap:wrap
 }
-.entry:hover{background:#ffffff08;padding-left:14px}
+a.entry:hover{background:#ffffff08;padding-left:14px}
 .entry b{font-size:10px;width:28px;flex:none;font-weight:500;color:var(--dim)}
-.entry .name{font-size:clamp(18px,2.4vw,26px);font-weight:600;letter-spacing:-.02em}
+.entry .name{font-size:clamp(17px,2.2vw,24px);font-weight:600;letter-spacing:-.02em}
 .entry .meta{margin-left:auto;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.16em}
 .entry .go{color:var(--accent);font-size:18px}
-footer{margin-top:60px;display:flex;gap:18px;flex-wrap:wrap;color:var(--dim);font-size:11.5px}
+.entry .tag{
+  margin-left:auto;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--line);padding:4px 10px;border-radius:999px;white-space:nowrap
+}
+footer{margin-top:56px;display:flex;gap:18px;flex-wrap:wrap;color:var(--dim);font-size:11.5px}
 footer span{border-right:1px solid var(--line);padding-right:18px}
 footer span:last-child{border-right:0;padding-right:0}
+@media(max-width:640px){
+  body{padding:12vh 6vw 8vh}
+  .locales{top:12px;right:12px}
+  .entry{gap:6px 14px}
+  .entry .meta,.entry .tag{margin-left:0;width:100%}
+  footer span{border-right:0;padding-right:0}
+}
 </style>
 </head>
 <body>
-<div>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<div class="locales" role="group" aria-label="Language" data-i18n-attr="aria-label:langGroup">
+  <button type="button" data-lang="zh-TW" aria-pressed="false">繁體中文</button>
+  <button type="button" data-lang="en-US" aria-pressed="true">English</button>
+  <button type="button" data-lang="ja-JP" aria-pressed="false">日本語</button>
+</div>
+
+<main id="main">
   <div class="eyebrow">富山精機廠 · Fu San Machinery · Est. 1962</div>
-  <h1>BRASS BALL VALVES<br><em>BUILT SINCE 1962</em></h1>
-  <p class="sub">Re-engineering studies of the Fu San catalogue — each drawing rebuilt as an interactive, scroll-driven exploded assembly.</p>
-  <div class="catalog">
-    <a class="entry" href="oneOftheProduct.html">
-      <b class="mono">01</b>
-      <span class="name">BRASS 600 FP CxC BALL VALVE</span>
-      <span class="meta mono">FIG. F1362FP · 11 parts · 3/8"–3"</span>
-      <span class="go">→</span>
-    </a>
-  </div>
+  <h1><span data-i18n="hero.a">BRASS BALL VALVES</span><br><em data-i18n="hero.b">BUILT SINCE 1962</em></h1>
+  <p class="sub" data-i18n="hero.sub">Re-engineering studies of the Fu San catalogue — each drawing rebuilt as an interactive, scroll-driven exploded assembly.</p>
+
+  <p class="count mono" id="count"></p>
+  <ol class="catalog" id="catalog"></ol>
+
   <footer>
     <span>UL · CNS · CSA · CGA · AGA · ASSE</span>
     <span>ANSI/NSF · FM · ISO 9001 · PED/CE</span>
-    <span>Changhua HQ · 30,000 m² · 2,000,000 units/month</span>
+    <span id="footStats"></span>
   </footer>
-</div>
+</main>
+
+<script>
+'use strict';
+
+/* ---------- locale catalogs (en-US = fallback) ---------- */
+const STRINGS={
+'en-US':{
+  'skip':'Skip to content',
+  'langGroup':'Language',
+  'hero.a':'BRASS BALL VALVES',
+  'hero.b':'BUILT SINCE 1962',
+  'hero.sub':'Re-engineering studies of the Fu San catalogue — each drawing rebuilt as an interactive, scroll-driven exploded assembly.',
+  'count.one':'{count} product in catalogue',
+  'count.other':'{count} products in catalogue',
+  'type.valve':'BRASS BALL VALVE',
+  'status.planned':'Study planned',
+  'foot':'Changhua HQ · {area} · {units} units/month',
+  'title':'Fu San Machinery — Product Studies',
+  'desc':'Interactive exploded-assembly studies of the Fu San brass valve catalogue. Est. 1962, Changhua, Taiwan.'
+},
+'zh-TW':{
+  'skip':'跳至內容',
+  'langGroup':'語言',
+  'hero.a':'黃銅球閥',
+  'hero.b':'自 1962 年起製造',
+  'hero.sub':'富山產品目錄的再工程研究 — 每張圖紙重建為可互動、隨捲動組裝的爆炸視圖。',
+  'count.other':'目錄共 {count} 項產品',
+  'type.valve':'黃銅球閥',
+  'status.planned':'研究規劃中',
+  'foot':'彰化總廠 · {area} · 每月 {units} 支',
+  'title':'富山精機廠 — 產品研究',
+  'desc':'富山黃銅球閥目錄的互動式爆炸組裝研究。1962 年創立於彰化。'
+},
+'ja-JP':{
+  'skip':'本文へスキップ',
+  'langGroup':'言語',
+  'hero.a':'真鍮ボールバルブ',
+  'hero.b':'1962年創業',
+  'hero.sub':'富山カタログのリエンジニアリング研究 — 各図面をスクロールで組み上がる対話的分解ビューに再構築。',
+  'count.other':'カタログ全{count}製品',
+  'type.valve':'真鍮ボールバルブ',
+  'status.planned':'スタディ予定',
+  'foot':'彰化本社 · {area} · 月産 {units} 本',
+  'title':'富山精機廠 — 製品スタディ',
+  'desc':'富山真鍮ボールバルブカタログの対話的分解組立スタディ。1962年、彰化創業。'
+}};
+const FALLBACK='en-US';
+
+/* ---------- product data (locale-independent) ---------- */
+const PRODUCTS=[
+ {n:'01',study:true,name:'BRASS 600 FP CxC BALL VALVE',meta:'FIG. F1362FP · 11 parts · 3/8"–3"',href:'oneOftheProduct.html'},
+ {n:'02',model:'F1361FP'},
+ {n:'03',model:'F1361SPMCL'},
+ {n:'04',model:'F1221F'},
+ {n:'05',model:'F1151S'},
+ {n:'06',model:'F1331SRF'},
+ {n:'07',model:'F1173E'}
+];
+
+/* ---------- i18n engine ---------- */
+let locale=FALLBACK;
+const warned=new Set();
+
+function t(key,vars){
+  let s=STRINGS[locale]&&STRINGS[locale][key];
+  if(s===undefined){
+    s=STRINGS[FALLBACK][key];
+    if(!warned.has(key)){warned.add(key);console.warn('[i18n] missing key "'+key+'" in '+locale+', fell back to '+FALLBACK)}
+  }
+  if(s===undefined)s='{'+key+'}'; // never blank the UI — show the key itself
+  if(vars)for(const k in vars)s=s.split('{'+k+'}').join(vars[k]);
+  return s;
+}
+function tCount(key,n){
+  const cat=new Intl.PluralRules(locale).select(n);
+  return t(key+'.'+cat,{count:new Intl.NumberFormat(locale).format(n)});
+}
+const fmtNumber=n=>new Intl.NumberFormat(locale).format(n);
+const fmtYear=y=>new Intl.DateTimeFormat(locale,{year:'numeric'}).format(new Date(y,0,1));
+function fmtArea(m2){
+  if(locale==='en-US')return fmtNumber(Math.round(m2*10.7639104167))+' ft²';
+  return fmtNumber(m2)+' m²';
+}
+function footText(){
+  return t('foot',{area:fmtArea(30000),units:fmtNumber(2000000)});
+}
+
+/* ---------- render ---------- */
+function renderCatalog(){
+  document.getElementById('catalog').innerHTML=PRODUCTS.map(p=>{
+    if(p.study){
+      return '<li><a class="entry" href="'+p.href+'">'+
+        '<b class="mono">'+p.n+'</b>'+
+        '<span class="name">'+p.name+'</span>'+
+        '<span class="meta mono">'+p.meta+'</span>'+
+        '<span class="go" aria-hidden="true">→</span></a></li>';
+    }
+    return '<li><div class="entry">'+
+      '<b class="mono">'+p.n+'</b>'+
+      '<span class="name">'+p.model+'</span>'+
+      '<span class="meta">'+t('type.valve')+'</span>'+
+      '<span class="tag">'+t('status.planned')+'</span></div></li>';
+  }).join('');
+}
+function apply(){
+  const html=document.documentElement;
+  html.lang=locale;
+  html.setAttribute('data-locale',locale);
+  document.title=t('title');
+  document.querySelector('meta[name=description]').content=t('desc');
+  document.querySelector('meta[property="og:title"]').content=t('title');
+  document.querySelector('meta[property="og:description"]').content=t('desc');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t(el.dataset.i18n)});
+  document.querySelectorAll('[data-i18n-attr]').forEach(el=>{
+    el.dataset.i18nAttr.split(';').forEach(pair=>{
+      const i=pair.indexOf(':');
+      el.setAttribute(pair.slice(0,i),t(pair.slice(i+1)));
+    });
+  });
+  document.getElementById('count').textContent=tCount('count',PRODUCTS.length);
+  document.getElementById('footStats').textContent=footText();
+  renderCatalog();
+  document.querySelectorAll('.locales button').forEach(b=>{
+    b.setAttribute('aria-pressed',String(b.dataset.lang===locale));
+  });
+}
+function setLocale(l,updateUrl){
+  if(!STRINGS[l])l=FALLBACK;
+  locale=l;
+  try{localStorage.setItem('fusan-locale',l)}catch(e){}
+  if(updateUrl){
+    try{history.replaceState(null,'','?lang='+l)}catch(e){}
+  }
+  apply();
+}
+
+/* ---------- negotiation: ?lang → localStorage → navigator → en-US ---------- */
+function negotiate(){
+  const q=new URLSearchParams(location.search).get('lang');
+  if(q&&STRINGS[q])return q;
+  let saved=null;
+  try{saved=localStorage.getItem('fusan-locale')}catch(e){}
+  if(saved&&STRINGS[saved])return saved;
+  const langs=navigator.languages||[navigator.language||''];
+  for(const raw of langs){
+    const l=raw.replace('_','-');
+    if(STRINGS[l])return l;
+    const base=l.split('-')[0];
+    if(base==='zh')return 'zh-TW';
+    if(base==='ja')return 'ja-JP';
+    if(base==='en')return 'en-US';
+  }
+  return FALLBACK;
+}
+document.querySelectorAll('.locales button').forEach(b=>{
+  b.addEventListener('click',()=>setLocale(b.dataset.lang,true));
+});
+setLocale(negotiate(),false);
+</script>
 </body>
 </html>
