@@ -1,278 +1,269 @@
 <!DOCTYPE html>
-<html lang="en-US" data-locale="en-US">
+<html lang="zh-Hant-TW" data-theme="light">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fu San Machinery — Product Studies</title>
-<meta name="description" content="Interactive exploded-assembly studies of the Fu San brass valve catalogue. Est. 1962, Changhua, Taiwan.">
-<link rel="alternate" hreflang="en-US" href="index.html?lang=en-US">
-<link rel="alternate" hreflang="zh-TW" href="index.html?lang=zh-TW">
-<link rel="alternate" hreflang="ja-JP" href="index.html?lang=ja-JP">
-<link rel="alternate" hreflang="x-default" href="index.html">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Fu San Machinery — Product Studies">
-<meta property="og:description" content="Interactive exploded-assembly studies of the Fu San brass valve catalogue. Est. 1962, Changhua, Taiwan.">
-<meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="zh_TW">
-<meta property="og:locale:alternate" content="ja_JP">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"富山精機廠股份有限公司","alternateName":"Fu San Machinery","foundingDate":"1962-04-05","numberOfEmployees":350,"address":{"@type":"PostalAddress","addressLocality":"Changhua","addressCountry":"TW"}}
-</script>
-<style>
-:root{
-  --bg:#002547;--bg2:#003366;--panel:#013a6b;--line:#0b4d85;
-  --ink:#f2f8ff;--dim:#7fb4dd;--accent:#66CCFF;--gold:#c9c520;
-  --font:"Inter","Segoe UI","Noto Sans TC",system-ui,sans-serif;
-}
-html[data-locale="zh-TW"]{--font:"Inter","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif}
-html[data-locale="ja-JP"]{--font:"Inter","Noto Sans JP","Yu Gothic",system-ui,sans-serif}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{
-  margin:0;min-height:100svh;display:flex;align-items:center;
-  background:linear-gradient(180deg,#002547 0%,#003366 42%,#00294f 100%);
-  background-attachment:fixed;color:var(--ink);
-  font-family:var(--font);
-  -webkit-font-smoothing:antialiased;padding:8vh 7vw;position:relative;overflow:hidden;
-}
-html[data-locale="zh-TW"] body,html[data-locale="ja-JP"] body{line-break:strict;word-break:normal}
-.mono{font-family:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace}
-body::before{
-  content:"";position:absolute;inset:0;
-  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:48px 48px;opacity:.35;mask-image:radial-gradient(ellipse at 30% 40%,#000 10%,transparent 72%);
-}
-body>*{position:relative}
-:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.skip{
-  position:absolute;top:-100px;left:24px;z-index:30;background:var(--gold);color:#002547;
-  font-size:13px;font-weight:600;padding:10px 16px;text-decoration:none;transition:top .2s
-}
-.skip:focus{top:16px}
-.locales{position:fixed;top:18px;right:18px;z-index:20;display:flex;gap:6px}
-.locales button{
-  font:inherit;font-size:11px;letter-spacing:.08em;padding:7px 12px;cursor:pointer;
-  background:var(--panel);color:var(--dim);border:1px solid var(--line);border-radius:999px
-}
-.locales button[aria-pressed="true"]{background:var(--accent);color:#00294f;font-weight:600;border-color:var(--accent)}
-.eyebrow{letter-spacing:.42em;font-size:11px;color:var(--gold);text-transform:uppercase;margin-bottom:28px}
-html[data-locale="zh-TW"] .eyebrow,html[data-locale="ja-JP"] .eyebrow{text-transform:none;letter-spacing:.18em}
-h1{font-size:clamp(30px,5.4vw,64px);line-height:1.02;margin:0;font-weight:650;letter-spacing:-.03em;color:#fff}
-h1 em{font-style:normal;color:var(--accent)}
-html[data-locale="zh-TW"] h1,html[data-locale="ja-JP"] h1{line-height:1.25;letter-spacing:0}
-.sub{margin-top:24px;max-width:56ch;color:var(--dim);font-size:16px;line-height:1.7}
-html[data-locale="zh-TW"] .sub{line-height:1.85}
-html[data-locale="ja-JP"] .sub{line-height:1.9}
-.count{margin:48px 0 10px;font-size:12px;color:var(--gold);letter-spacing:.14em}
-.catalog{margin:0;border-top:1px solid var(--line);max-width:880px;list-style:none;padding:0}
-.catalog li{margin:0}
-.entry{
-  display:flex;align-items:baseline;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);
-  color:var(--ink);text-decoration:none;transition:background .25s,padding .25s;flex-wrap:wrap
-}
-a.entry:hover{background:#ffffff08;padding-left:14px}
-.entry b{font-size:10px;width:28px;flex:none;font-weight:500;color:var(--dim)}
-.entry .name{font-size:clamp(17px,2.2vw,24px);font-weight:600;letter-spacing:-.02em}
-.entry .meta{margin-left:auto;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.16em}
-.entry .go{color:var(--accent);font-size:18px}
-.entry .tag{
-  margin-left:auto;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--gold);border:1px solid var(--line);padding:4px 10px;border-radius:999px;white-space:nowrap
-}
-footer{margin-top:56px;display:flex;gap:18px;flex-wrap:wrap;color:var(--dim);font-size:11.5px}
-footer span{border-right:1px solid var(--line);padding-right:18px}
-footer span:last-child{border-right:0;padding-right:0}
-@media(max-width:640px){
-  body{padding:12vh 6vw 8vh}
-  .locales{top:12px;right:12px}
-  .entry{gap:6px 14px}
-  .entry .meta,.entry .tag{margin-left:0;width:100%}
-  footer span{border-right:0;padding-right:0}
-}
-</style>
-</head>
-<body>
-<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 
-<div class="locales" role="group" aria-label="Language" data-i18n-attr="aria-label:langGroup">
-  <button type="button" data-lang="zh-TW" aria-pressed="false">繁體中文</button>
-  <button type="button" data-lang="en-US" aria-pressed="true">English</button>
-  <button type="button" data-lang="ja-JP" aria-pressed="false">日本語</button>
-</div>
+<title data-i18n="meta.title">富山精機廠股份有限公司</title>
+<meta name="description" data-i18n-attr="content:meta.description" content="">
+
+<link rel="alternate" hreflang="zh-Hant-TW" href="./?lang=zh-TW">
+<link rel="alternate" hreflang="en" href="./?lang=en-US">
+<link rel="alternate" hreflang="ja" href="./?lang=ja-JP">
+<link rel="alternate" hreflang="x-default" href="./?lang=en-US">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FU SAN MACHINERY CO., LTD.">
+<meta property="og:title" data-i18n-attr="content:meta.title" content="">
+<meta property="og:description" data-i18n-attr="content:meta.description" content="">
+<meta property="og:locale" id="ogLocale" content="zh_TW">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FU SAN MACHINERY CO., LTD.",
+  "alternateName": "富山精機廠股份有限公司",
+  "foundingDate": "1962-04-05",
+  "url": "http://www.fusan.com.tw/",
+  "email": "sales@fusan.com.tw",
+  "telephone": "+886-4-756-2131",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "No. 22, Ln. 89, Sec. 4, Zhangmei Rd., Hemei Township",
+    "addressRegion": "Changhua County",
+    "addressCountry": "TW"
+  }
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skipToContent">跳至主要內容</a>
+
+<!-- ─────────────────────────── HEADER ─────────────────────────── -->
+<header class="site-header" id="siteHeader">
+  <div class="shell header-inner">
+
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">FS</span>
+      <span class="brand-text">
+        <strong class="brand-name" data-i18n="brand.name">富山精機廠</strong>
+        <span class="brand-tag" data-i18n="brand.tagline">閥門製造專家</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" id="siteNav" data-i18n-attr="aria-label:a11y.mainNav">
+      <a href="#about"      data-i18n="nav.about">關於富山</a>
+      <a href="#products"   data-i18n="nav.products">產品介紹</a>
+      <a href="#process"    data-i18n="nav.process">製造流程</a>
+      <a href="#history"    data-i18n="nav.history">工廠發展</a>
+      <a href="#quality"    data-i18n="nav.quality">品質認證</a>
+      <a href="#contact"    data-i18n="nav.contact">聯絡我們</a>
+    </nav>
+
+    <div class="header-tools">
+      <!-- LOCALE SWITCHER -->
+      <div class="locale-switch">
+        <!-- aria-label is set in app.js so it embeds the visible language
+             name, satisfying WCAG 2.5.3 "Label in Name". -->
+        <button type="button" class="icon-btn locale-btn" id="localeBtn"
+                aria-haspopup="listbox" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 0c2.5 2.7 3.8 6.3 3.8 10S14.5 19.3 12 22m0-20C9.5 4.7 8.2 8.3 8.2 12S9.5 19.3 12 22M2.5 9h19M2.5 15h19"/></svg>
+          <span id="localeCurrent">繁體中文</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ico chev"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <ul class="locale-menu" id="localeMenu" role="listbox" hidden></ul>
+      </div>
+
+      <button type="button" class="icon-btn" id="themeBtn"
+              data-i18n-attr="aria-label:a11y.toggleTheme">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico ico-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico ico-moon"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+
+      <button type="button" class="icon-btn menu-btn" id="menuBtn"
+              aria-expanded="false" aria-controls="siteNav"
+              data-i18n-attr="aria-label:a11y.toggleMenu">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
 
 <main id="main">
-  <div class="eyebrow">富山精機廠 · Fu San Machinery · Est. 1962</div>
-  <h1><span data-i18n="hero.a">BRASS BALL VALVES</span><br><em data-i18n="hero.b">BUILT SINCE 1962</em></h1>
-  <p class="sub" data-i18n="hero.sub">Re-engineering studies of the Fu San catalogue — each drawing rebuilt as an interactive, scroll-driven exploded assembly.</p>
 
-  <p class="count mono" id="count"></p>
-  <ol class="catalog" id="catalog"></ol>
+<!-- ─────────────────────────── HERO ─────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="shell hero-inner">
+    <p class="eyebrow reveal">
+      <span data-i18n="hero.eyebrow">台灣製閥業領導品牌</span>
+      <span class="dot">·</span>
+      <span data-i18n-years-since="1962">自 1962 年</span>
+    </p>
 
-  <footer>
-    <span>UL · CNS · CSA · CGA · AGA · ASSE</span>
-    <span>ANSI/NSF · FM · ISO 9001 · PED/CE</span>
-    <span id="footStats"></span>
-  </footer>
+    <h1 class="hero-title reveal" data-i18n-html="hero.title">
+      精密閥門<br>製造，<em>值得信賴</em>
+    </h1>
+
+    <p class="hero-lede reveal" data-i18n="hero.lede">
+      從原物料、鑄造、鍛造、加工到組裝，環環相扣的嚴謹品保制度。
+    </p>
+
+    <div class="hero-cta reveal">
+      <a class="btn btn-primary" href="#products" data-i18n="hero.ctaPrimary">瀏覽產品</a>
+      <a class="btn btn-ghost" href="#contact" data-i18n="hero.ctaSecondary">聯絡我們</a>
+    </div>
+
+    <!-- LOCALE-AWARE NUMBER / UNIT FORMATTING LIVES HERE -->
+    <dl class="stats reveal">
+      <div class="stat">
+        <dt data-i18n="stats.founded">創立年份</dt>
+        <dd data-fmt-year="1962">1962</dd>
+      </div>
+      <div class="stat">
+        <dt data-i18n="stats.capacity">月產能</dt>
+        <dd><span data-fmt-number="2000000">2,000,000</span> <small data-i18n="units.pcsPerMonth">只 / 月</small></dd>
+      </div>
+      <div class="stat">
+        <dt data-i18n="stats.employees">員工人數</dt>
+        <dd><span data-fmt-number="680">680</span> <small data-i18n="units.people">名</small></dd>
+      </div>
+      <div class="stat">
+        <dt data-i18n="stats.area">廠區面積</dt>
+        <dd><span data-fmt-area="80000">80,000</span></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ─────────────────────────── ABOUT ─────────────────────────── -->
+<section class="section" id="about">
+  <div class="shell">
+    <header class="section-head reveal">
+      <p class="kicker" data-i18n="about.kicker">關於富山</p>
+      <h2 data-i18n="about.heading">一甲子的製閥工藝</h2>
+    </header>
+
+    <div class="about-grid">
+      <div class="prose reveal">
+        <p data-i18n="about.p1">富山精機廠股份有限公司成立於西元 1962 年，早期生產建築五金製品，至今已有六十年的歷史。在董事長鐘連在先生的領導之下不斷成長，由當初七、八名員工的小工廠，成長到今日行銷全世界的國際化企業，居國內製閥業的領先地位。</p>
+        <p data-i18n="about.p2">產品行銷至歐美、日本等先進國家，市場遍及世界各大洲。這都因為我們堅持一流的研究發展、合理化生產流程，以及嚴謹的品保制度。</p>
+      </div>
+
+      <aside class="values reveal">
+        <h3 data-i18n="about.valuesTitle">富山四維</h3>
+        <ul class="value-list" id="valueList"></ul>
+        <!-- Filled by app.js: the value names are joined with Intl.ListFormat
+             so the separator and conjunction are correct per locale. -->
+        <p class="value-note" id="valueNote"></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── PRODUCTS ─────────────────────────── -->
+<section class="section section-alt" id="products">
+  <div class="shell">
+    <header class="section-head reveal">
+      <p class="kicker" data-i18n="products.kicker">產品介紹</p>
+      <h2 data-i18n="products.heading">六大產品系列</h2>
+      <p class="section-lede" data-i18n="products.lede">符合 MSS、CNS、UL、NSF 等國際規範的黃銅與青銅閥門。</p>
+    </header>
+
+    <div class="card-grid" id="productGrid"></div>
+
+    <!-- PLURALIZATION DEMO -->
+    <p class="result-count reveal" id="productCount" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ─────────────────────────── PROCESS ─────────────────────────── -->
+<section class="section" id="process">
+  <div class="shell">
+    <header class="section-head reveal">
+      <p class="kicker" data-i18n="process.kicker">製造流程</p>
+      <h2 data-i18n="process.heading">環環相扣的五道關卡</h2>
+    </header>
+    <ol class="process-flow" id="processFlow"></ol>
+  </div>
+</section>
+
+<!-- ─────────────────────────── HISTORY ─────────────────────────── -->
+<section class="section section-alt" id="history">
+  <div class="shell">
+    <header class="section-head reveal">
+      <p class="kicker" data-i18n="history.kicker">工廠發展</p>
+      <h2 data-i18n="history.heading">發展沿革</h2>
+    </header>
+    <ol class="timeline" id="timeline"></ol>
+  </div>
+</section>
+
+<!-- ─────────────────────────── QUALITY ─────────────────────────── -->
+<section class="section" id="quality">
+  <div class="shell">
+    <header class="section-head reveal">
+      <p class="kicker" data-i18n="quality.kicker">品質認證</p>
+      <h2 data-i18n="quality.heading">國際認證與標章</h2>
+      <p class="section-lede" data-i18n="quality.lede">「差之毫釐，失之千里」── 品質建立在每一個流程。</p>
+    </header>
+    <ul class="cert-grid" id="certGrid"></ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── CONTACT ─────────────────────────── -->
+<section class="section section-alt" id="contact">
+  <div class="shell">
+    <header class="section-head reveal">
+      <p class="kicker" data-i18n="contact.kicker">聯絡我們</p>
+      <h2 data-i18n="contact.heading">全球據點</h2>
+    </header>
+    <div class="card-grid contact-grid" id="contactGrid"></div>
+  </div>
+</section>
+
 </main>
 
-<script>
-'use strict';
+<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <div>
+      <p class="footer-name" data-i18n="footer.company">富山精機廠股份有限公司</p>
+      <p class="footer-addr" data-i18n="footer.address">彰化縣和美鎮彰美路四段 89 巷 22 號</p>
+      <p class="footer-meta">
+        <a href="https://goo.gl/maps/Fw7PHXZhUuNATpFh8" target="_blank" rel="noopener"
+           data-i18n="footer.map">檢視地圖</a>
+        <span class="dot">·</span>
+        <a href="mailto:sales@fusan.com.tw">sales@fusan.com.tw</a>
+      </p>
+    </div>
+    <div class="footer-right">
+      <!-- LOCALE-AWARE DATE + RELATIVE TIME -->
+      <p class="footer-updated">
+        <span data-i18n="footer.lastUpdated">最後更新</span>:
+        <time id="updatedAbs"></time>
+        <span class="muted" id="updatedRel"></span>
+      </p>
+      <p class="footer-copy" id="footerCopy"></p>
+    </div>
+  </div>
+</footer>
 
-/* ---------- locale catalogs (en-US = fallback) ---------- */
-const STRINGS={
-'en-US':{
-  'skip':'Skip to content',
-  'langGroup':'Language',
-  'hero.a':'BRASS BALL VALVES',
-  'hero.b':'BUILT SINCE 1962',
-  'hero.sub':'Re-engineering studies of the Fu San catalogue — each drawing rebuilt as an interactive, scroll-driven exploded assembly.',
-  'count.one':'{count} product in catalogue',
-  'count.other':'{count} products in catalogue',
-  'type.valve':'BRASS BALL VALVE',
-  'status.planned':'Study planned',
-  'foot':'Changhua HQ · {area} · {units} units/month',
-  'title':'Fu San Machinery — Product Studies',
-  'desc':'Interactive exploded-assembly studies of the Fu San brass valve catalogue. Est. 1962, Changhua, Taiwan.'
-},
-'zh-TW':{
-  'skip':'跳至內容',
-  'langGroup':'語言',
-  'hero.a':'黃銅球閥',
-  'hero.b':'自 1962 年起製造',
-  'hero.sub':'富山產品目錄的再工程研究 — 每張圖紙重建為可互動、隨捲動組裝的爆炸視圖。',
-  'count.other':'目錄共 {count} 項產品',
-  'type.valve':'黃銅球閥',
-  'status.planned':'研究規劃中',
-  'foot':'彰化總廠 · {area} · 每月 {units} 支',
-  'title':'富山精機廠 — 產品研究',
-  'desc':'富山黃銅球閥目錄的互動式爆炸組裝研究。1962 年創立於彰化。'
-},
-'ja-JP':{
-  'skip':'本文へスキップ',
-  'langGroup':'言語',
-  'hero.a':'真鍮ボールバルブ',
-  'hero.b':'1962年創業',
-  'hero.sub':'富山カタログのリエンジニアリング研究 — 各図面をスクロールで組み上がる対話的分解ビューに再構築。',
-  'count.other':'カタログ全{count}製品',
-  'type.valve':'真鍮ボールバルブ',
-  'status.planned':'スタディ予定',
-  'foot':'彰化本社 · {area} · 月産 {units} 本',
-  'title':'富山精機廠 — 製品スタディ',
-  'desc':'富山真鍮ボールバルブカタログの対話的分解組立スタディ。1962年、彰化創業。'
-}};
-const FALLBACK='en-US';
-
-/* ---------- product data (locale-independent) ---------- */
-const PRODUCTS=[
- {n:'01',study:true,name:'BRASS 600 FP CxC BALL VALVE',meta:'FIG. F1362FP · 11 parts · 3/8"–3"',href:'oneOftheProduct.html'},
- {n:'02',model:'F1361FP'},
- {n:'03',model:'F1361SPMCL'},
- {n:'04',model:'F1221F'},
- {n:'05',model:'F1151S'},
- {n:'06',model:'F1331SRF'},
- {n:'07',model:'F1173E'}
-];
-
-/* ---------- i18n engine ---------- */
-let locale=FALLBACK;
-const warned=new Set();
-
-function t(key,vars){
-  let s=STRINGS[locale]&&STRINGS[locale][key];
-  if(s===undefined){
-    s=STRINGS[FALLBACK][key];
-    if(!warned.has(key)){warned.add(key);console.warn('[i18n] missing key "'+key+'" in '+locale+', fell back to '+FALLBACK)}
-  }
-  if(s===undefined)s='{'+key+'}'; // never blank the UI — show the key itself
-  if(vars)for(const k in vars)s=s.split('{'+k+'}').join(vars[k]);
-  return s;
-}
-function tCount(key,n){
-  const cat=new Intl.PluralRules(locale).select(n);
-  return t(key+'.'+cat,{count:new Intl.NumberFormat(locale).format(n)});
-}
-const fmtNumber=n=>new Intl.NumberFormat(locale).format(n);
-const fmtYear=y=>new Intl.DateTimeFormat(locale,{year:'numeric'}).format(new Date(y,0,1));
-function fmtArea(m2){
-  if(locale==='en-US')return fmtNumber(Math.round(m2*10.7639104167))+' ft²';
-  return fmtNumber(m2)+' m²';
-}
-function footText(){
-  return t('foot',{area:fmtArea(30000),units:fmtNumber(2000000)});
-}
-
-/* ---------- render ---------- */
-function renderCatalog(){
-  document.getElementById('catalog').innerHTML=PRODUCTS.map(p=>{
-    if(p.study){
-      return '<li><a class="entry" href="'+p.href+'">'+
-        '<b class="mono">'+p.n+'</b>'+
-        '<span class="name">'+p.name+'</span>'+
-        '<span class="meta mono">'+p.meta+'</span>'+
-        '<span class="go" aria-hidden="true">→</span></a></li>';
-    }
-    return '<li><div class="entry">'+
-      '<b class="mono">'+p.n+'</b>'+
-      '<span class="name">'+p.model+'</span>'+
-      '<span class="meta">'+t('type.valve')+'</span>'+
-      '<span class="tag">'+t('status.planned')+'</span></div></li>';
-  }).join('');
-}
-function apply(){
-  const html=document.documentElement;
-  html.lang=locale;
-  html.setAttribute('data-locale',locale);
-  document.title=t('title');
-  document.querySelector('meta[name=description]').content=t('desc');
-  document.querySelector('meta[property="og:title"]').content=t('title');
-  document.querySelector('meta[property="og:description"]').content=t('desc');
-  document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t(el.dataset.i18n)});
-  document.querySelectorAll('[data-i18n-attr]').forEach(el=>{
-    el.dataset.i18nAttr.split(';').forEach(pair=>{
-      const i=pair.indexOf(':');
-      el.setAttribute(pair.slice(0,i),t(pair.slice(i+1)));
-    });
-  });
-  document.getElementById('count').textContent=tCount('count',PRODUCTS.length);
-  document.getElementById('footStats').textContent=footText();
-  renderCatalog();
-  document.querySelectorAll('.locales button').forEach(b=>{
-    b.setAttribute('aria-pressed',String(b.dataset.lang===locale));
-  });
-}
-function setLocale(l,updateUrl){
-  if(!STRINGS[l])l=FALLBACK;
-  locale=l;
-  try{localStorage.setItem('fusan-locale',l)}catch(e){}
-  if(updateUrl){
-    try{history.replaceState(null,'','?lang='+l)}catch(e){}
-  }
-  apply();
-}
-
-/* ---------- negotiation: ?lang → localStorage → navigator → en-US ---------- */
-function negotiate(){
-  const q=new URLSearchParams(location.search).get('lang');
-  if(q&&STRINGS[q])return q;
-  let saved=null;
-  try{saved=localStorage.getItem('fusan-locale')}catch(e){}
-  if(saved&&STRINGS[saved])return saved;
-  const langs=navigator.languages||[navigator.language||''];
-  for(const raw of langs){
-    const l=raw.replace('_','-');
-    if(STRINGS[l])return l;
-    const base=l.split('-')[0];
-    if(base==='zh')return 'zh-TW';
-    if(base==='ja')return 'ja-JP';
-    if(base==='en')return 'en-US';
-  }
-  return FALLBACK;
-}
-document.querySelectorAll('.locales button').forEach(b=>{
-  b.addEventListener('click',()=>setLocale(b.dataset.lang,true));
-});
-setLocale(negotiate(),false);
-</script>
+<!-- i18n.js must define I18n.register() before any catalog calls it.
+     Locale catalogs are plain scripts so the demo also runs from file://. -->
+<script src="assets/js/i18n.js"></script>
+<script src="locales/zh-TW.js"></script>
+<script src="locales/en-US.js"></script>
+<script src="locales/ja-JP.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>
